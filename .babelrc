@@ -1,0 +1,16 @@
+{
+  "presets": [
+    [
+      "env", {
+        "modules": false,
+        "targets": {
+          "browsers": ["iOS >= 7", "Android >= 4"]
+        }
+      }
+    ],
+    "stage-2"
+  ],
+  "plugins": [
+    "transform-runtime"
+  ]
+}

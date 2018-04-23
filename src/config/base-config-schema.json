@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "title": "页面基本配置",
+  "properties": {
+    "title": {
+      "title": "页面标题",
+      "type": "string",
+      "default": "Hello Pipline"
+    },
+    "backgroundColor": {
+      "title": "页面背景颜色",
+      "description": "试试修改页面背景颜色", 
+      "type": "string",
+      "format": "color",
+      "default": "#199002"
+    }
+  }
+}

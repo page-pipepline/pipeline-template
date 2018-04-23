@@ -1,0 +1,44 @@
+[
+  {
+    "id": "pipeline-header-demo",
+    "name": "pipeline-header-demo",
+    "title": "头部区",
+    "data": {
+      "title": "页面可视化搭建框架",
+      "src": "https://avatars3.githubusercontent.com/u/38666040",
+      "link": "https://github.com/page-pipepline"
+    }
+  },
+  {
+    "id": "pipeline-info-demo",
+    "name": "pipeline-info-demo",
+    "title": "信息区",
+    "data": {
+      "title": "框架特性",
+      "infoList": [
+        {
+          "info": "可视化页面搭建框架"
+        },
+        {
+          "info": "支持自由拓展页面组件"
+        },
+        {
+          "info": "自定义页面可配置字段"
+        },
+        {
+          "info": "模板工程/编辑器/后台服务解偶"
+        }
+      ]
+    }
+  },
+  {
+    "id": "pipeline-header-demo-1",
+    "name": "pipeline-header-demo",
+    "title": "头部区",
+    "data": {
+      "title": "开发者信息",
+      "src": "https://avatars3.githubusercontent.com/u/4598445",
+      "link": "https://github.com/CntChen"
+    }
+  }
+]

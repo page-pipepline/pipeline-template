@@ -1,0 +1,21 @@
+.DS_Store
+node_modules/
+dist/
+server/*
+!server/node.js
+!server/preview-inserted-script.js
+pipeline-library.zip
+pipeline-template.zip
+.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

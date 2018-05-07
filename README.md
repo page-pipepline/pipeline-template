@@ -67,7 +67,10 @@ $ node server/node.js preview
 ## TODO
 * [x] 基础样式的引入方式
 * [x] 模板打包为压缩包脚本
+* [ ] 组件开发套件
+* [ ] 组件抽离为 npm 包
 * [ ] schema 和 data 的验证页面
+
 
 ## 前后端同构已知问题
 

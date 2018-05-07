@@ -5,7 +5,7 @@
     "title": {
       "title": "页面标题",
       "type": "string",
-      "default": "Hello Pipline"
+      "default": "Hello Pipeline"
     },
     "backgroundColor": {
       "title": "页面背景颜色",

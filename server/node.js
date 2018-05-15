@@ -67,6 +67,7 @@ renderer.renderToString(context)
     }
 
     fs.writeFileSync(path.join(__dirname, 'dist', 'index.html'), html, 'utf-8');
+    console.error('server side render success.');
   })
   .catch((e) => {
     console.error(e);

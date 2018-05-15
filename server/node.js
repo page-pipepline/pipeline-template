@@ -35,7 +35,7 @@ ${previewInsertedScriptStr.replace(/\n+$/, '')}
 // 页面中的 <%= htmlWebpackPlugin.options.xxx %> 占位符, 替换为 <!--baseConfig-xxx-->
 // htmlWebpackPlugin 生成的页面, 会在服务端渲染执行 Vue 的渲染, 所以不能使用 Vue 的模板语法
 const insertBaseConfigToHtml = (htmlStr, config) => {
-  const newHtmlStr = Object.keys(config).reduce((accumulator, key) => accumulator.replace(new RegExp(`<!--baseConfig\\-${key}-->`), config[key]), htmlStr);
+  const newHtmlStr = Object.keys(config).reduce((accumulator, key) => accumulator.replace(new RegExp(`<!--baseConfig\\-${key}-->`, 'g'), config[key]), htmlStr);
   return newHtmlStr;
 };
 

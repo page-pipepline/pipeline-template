@@ -7,7 +7,7 @@ const receiveMessage = (event) => {
   const componentId = event.data.currentComponent.id;
   const selector = `div[data-component-id="${componentId}"]`;
   const targetComponent = document.querySelector(selector);
-  targetComponent.scrollIntoView();
+  targetComponent && targetComponent.scrollIntoView();
 };
 
 window.addEventListener('message', receiveMessage, false);

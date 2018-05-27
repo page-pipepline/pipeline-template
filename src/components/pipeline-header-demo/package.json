@@ -1,0 +1,8 @@
+{
+  "pipeline": {
+    "name": "pipeline-header-demo",
+    "title": "头部区示例",
+    "type": "组件的类型，用于展示组件库列表时分类展示 //TODO",
+    "only": "组件是否在页面只能有唯一一个，不如分享组件 //TODO"
+  }
+}

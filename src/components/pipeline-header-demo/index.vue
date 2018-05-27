@@ -42,6 +42,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 240px;
 
   &__img {
     border-radius: 8px;

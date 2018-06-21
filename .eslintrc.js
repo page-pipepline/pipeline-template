@@ -39,6 +39,7 @@ module.exports = {
     'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
     'no-restricted-syntax': 'off',
     'guard-for-in': 'off',
+    'no-unname-function': 'off',
      // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   }

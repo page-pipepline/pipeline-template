@@ -30,6 +30,33 @@
     }
   },
   {
+    "id": "pipeline-gap-demo",
+    "name": "pipeline-gap-demo",
+    "data": {
+      "backgroundColor": "yellow",
+      "textColor": "black",
+      "text": "(●＾o＾●)",
+      "height": 40
+    }
+  },
+  {
+    "id": "pipeline-weather-demo",
+    "name": "pipeline-weather-demo",
+    "data": {
+      "city": "深圳"
+    }
+  },
+  {
+    "id": "pipeline-gap-demo-1",
+    "name": "pipeline-gap-demo",
+    "data": {
+      "backgroundColor": "yellow",
+      "textColor": "black",
+      "text": "(●＾o＾●)",
+      "height": 40
+    }
+  },
+  {
     "id": "pipeline-header-demo-1",
     "name": "pipeline-header-demo",
     "data": {

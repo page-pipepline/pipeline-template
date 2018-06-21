@@ -19,6 +19,8 @@ export default {
   components: {
     'pipeline-header-demo': () => import('comp/pipeline-header-demo'),
     'pipeline-info-demo': () => import('comp/pipeline-info-demo'),
+    'pipeline-gap-demo': () => import('comp/pipeline-gap-demo'),
+    'pipeline-weather-demo': () => import('comp/pipeline-weather-demo'),
   },
   data() {
     const pipelineComponents = (typeof window !== 'undefined') ?

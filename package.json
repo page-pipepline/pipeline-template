@@ -9,7 +9,6 @@
     "build": "rm -rf dist & node build/build.js",
     "server": "rm -rf server/dist && rm -rf server/config && node build/build-server.js",
     "render": "node server/node.js",
-    "library": "node build/server-library-archive.js",
     "template": "node build/server-template-archive.js",
     "lint": "eslint --ext .js,.vue src"
   },

@@ -4,7 +4,6 @@ dist/
 server/*
 !server/node.js
 !server/preview-inserted-script.js
-pipeline-library.zip
 pipeline-template.zip
 .log
 npm-debug.log*

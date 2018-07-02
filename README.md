@@ -32,14 +32,6 @@ $ npm run server
 $ npm run render
 ```
 
-* 生成组件库压缩包
-```
-$ npm run server
-$ npm run library
-```
-
-打包结果为`pipeline-library.zip`, 提交组件库时, 提交该 zip 文件.
-
 * 生成模板压缩包
 ```
 $ npm run server

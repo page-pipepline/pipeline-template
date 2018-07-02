@@ -1,5 +1,5 @@
 /*
- * 打包需要提交的模板
+ * 打包需要提交的组件库
  * @Author: CntChen
  * @Date: 2018-03-24
  */
@@ -9,9 +9,9 @@ const path = require('path');
 const chalk = require('chalk');
 const archiver = require('archiver');
 
-const templateName = 'pipeline-template.zip';
+const libraryName = 'pipeline-template.zip';
 
-const outputPath = path.join(__dirname, '..', templateName);
+const outputPath = path.join(__dirname, '..', libraryName);
 const output = fs.createWriteStream(outputPath);
 
 const archive = archiver('zip', {
@@ -22,7 +22,7 @@ const archive = archiver('zip', {
 
 output.on('close', () => {
   console.log(`  ${archive.pointer()} total bytes`);
-  console.log(chalk.cyan(`  Archiver finalized: ${templateName}.\n`));
+  console.log(chalk.cyan(`  Archiver finalized: ${libraryName}.\n`));
 });
 output.on('end', () => {
   console.log('Data has been drained');
@@ -41,13 +41,27 @@ archive.on('error', (err) => {
 
 archive.pipe(output);
 
+const directoryList = [
+  'build',
+  'config',
+  'server',
+  'src'
+];
 const fileList = [
-  'base-config.json',
-  'components.json',
+  '.babelrc',
+  '.editorconfig',
+  '.eslintignore',
+  '.eslintrc.js',
+  '.postcssrc.js',
+  'package.json',
+  'README.md',
 ];
 
+directoryList.forEach((dirPath) => {
+  archive.directory(path.join(__dirname, '..', dirPath), dirPath);
+});
 fileList.forEach((filePath) => {
-  archive.file(path.join(__dirname, '..', 'server', 'config', filePath), { name: filePath });
+  archive.file(path.join(__dirname, '..', filePath), { name: filePath });
 });
 
 archive.finalize();

@@ -6,19 +6,19 @@ module.exports = {
       title: '间隔区背景色',
       description: '试试修改间隔区背景色',
       type: 'string',
-      default: 'yellow',
+      default: '#FFFF00',
       format: 'color',
     },
     textColor: {
       title: '间隔区文本颜色',
       type: 'string',
-      default: 'black',
+      default: '#000000',
       format: 'color',
     },
     text: {
       title: '间隔区文本',
       type: 'string',
-      default: '(●＾o＾●)',
+      default: '╮(＾ᴗ＾)╭'
     },
     height: {
       title: '间隔区高度',

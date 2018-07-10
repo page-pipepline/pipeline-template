@@ -50,8 +50,8 @@
     "id": "pipeline-gap-demo-1",
     "name": "pipeline-gap-demo",
     "data": {
-      "backgroundColor": "yellow",
-      "textColor": "black",
+      "backgroundColor": "#FFFF00",
+      "textColor": "#000000",
       "text": "(●＾ᴗ＾●)",
       "height": 40
     }

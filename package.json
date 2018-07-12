@@ -10,7 +10,8 @@
     "server": "rm -rf server/dist && rm -rf server/config && node build/build-server.js",
     "render": "node server/node.js",
     "template": "node build/server-template-archive.js",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --ext .js,.vue src",
+    "release": "standard-version"
   },
   "author": "CntChen",
   "license": "MIT",
@@ -70,6 +71,7 @@
     "postcss-loader": "^2.0.5",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
+    "standard-version": "^4.4.0",
     "svg-sprite-loader": "^2.0.5",
     "svgo-loader": "^1.2.1",
     "url-loader": "^0.5.8",

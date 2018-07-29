@@ -1,6 +1,6 @@
 {
   "name": "pipeline-template",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "scripts": {
     "init": "yarn -V || npm i yarn -g && yarn",

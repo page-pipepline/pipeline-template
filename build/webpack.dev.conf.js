@@ -47,7 +47,6 @@ module.exports = merge(baseWebpackConfig, {
     new VConsolePlugin({ enable: config.dev.vConsole }),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      dnsPrefetch: config.dnsPrefetch,
       vueInstancePlaceholder: '<div id="app"></div>',
       filename: 'index.html',
       template: 'src/index.html',

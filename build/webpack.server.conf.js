@@ -64,8 +64,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      backgroundColor: '<!--baseConfig-backgroundColor-->',
-      dnsPrefetch: config.dnsPrefetch,
       vueInstancePlaceholder: '<!--vue-ssr-outlet-->',
       filename: path.join(__dirname, '..', 'server', 'dist', 'index-origin.html'),
       template: 'src/index.html',

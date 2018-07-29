@@ -70,7 +70,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      dnsPrefetch: config.dnsPrefetch,
       vueInstancePlaceholder: '<div id="app"></div>',
       filename: config.build.index,
       template: 'src/index.html',

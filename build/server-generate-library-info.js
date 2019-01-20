@@ -8,7 +8,10 @@ const fs = require('fs');
 const path = require('path');
 
 const configDir = path.join(__dirname, '../', 'server', 'config');
-fs.mkdirSync(configDir);
+const dirExist = fs.existsSync(configDir);
+if (!dirExist) {
+  fs.mkdirSync(configDir);
+}
 
 const componentsDir = path.join(__dirname, '../', 'src', 'components');
 const componentsPath = fs.readdirSync(componentsDir);

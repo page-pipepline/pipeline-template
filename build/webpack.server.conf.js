@@ -81,13 +81,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // https://webpack.js.org/plugins/module-concatenation-plugin/
     new webpack.optimize.ModuleConcatenationPlugin(),
     // keep module.id stable when vender modules does not change
-    new webpack.HashedModuleIdsPlugin(),
-    new CopyWebpackPlugin([
-      {
-        from: path.join(__dirname, '..', 'src', 'config'),
-        to: path.join(__dirname, '..', 'server', 'config'),
-      }
-    ]),
+    new webpack.HashedModuleIdsPlugin()
   ]
 });
 

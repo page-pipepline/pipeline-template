@@ -1,5 +1,6 @@
 // run other build task first
 require('./server-check-schema.js');
+require('./server-copy-config.js');
 require('./server-generate-library-info.js');
 require('./server-build-client.js');
 

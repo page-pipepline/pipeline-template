@@ -4,12 +4,12 @@
   "description": "",
   "scripts": {
     "init": "yarn -V || npm i yarn -g && yarn",
-    "dev": "node build/dev-server.js",
-    "start": "node build/dev-server.js",
-    "build": "rm -rf dist & node build/build.js",
-    "server": "rm -rf server/dist && rm -rf server/config && node build/build-server.js",
+    "dev": "node scripts/dev-server.js",
+    "start": "node scripts/dev-server.js",
+    "build": "rm -rf dist & node scripts/build.js",
+    "server": "rm -rf server/dist && rm -rf server/config && node scripts/build-server.js",
     "render": "node server/node.js",
-    "template": "node build/server-template-archive.js",
+    "template": "node scripts/server-template-archive.js",
     "lint": "eslint --ext .js,.vue src",
     "release": "standard-version"
   },

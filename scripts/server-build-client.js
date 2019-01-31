@@ -5,7 +5,7 @@ process.env.NODE_ENV = 'production';
 const ora = require('ora');
 const chalk = require('chalk');
 const webpack = require('webpack');
-const webpackConfig = require('./webpack.client.conf');
+const webpackConfig = require('../config/webpack.client.conf');
 
 const spinner = ora('building for production...');
 spinner.start();

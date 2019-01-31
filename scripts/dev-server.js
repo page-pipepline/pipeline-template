@@ -8,7 +8,7 @@ if (!process.env.NODE_ENV) {
 const opn = require('opn');
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
-const webpackConfig = require('./webpack.dev.conf');
+const webpackConfig = require('../config/webpack.dev.conf');
 
 // default port where dev server listens for incoming traffic
 const port = process.env.PORT || config.dev.port;

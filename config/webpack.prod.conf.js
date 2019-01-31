@@ -1,27 +1,21 @@
-const path = require('path');
 const utils = require('./utils');
 const webpack = require('webpack');
-const config = require('../config');
+const config = require('.');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 
 const env = config.build.env;
 
 const webpackConfig = merge(baseWebpackConfig, {
   entry: {
-    app: ['./src/main-server.js'],
-  },
-  externals: {
-    './config/components': {
-      commonjs2: '../config/components.json',
-      commonjs: '../config/components.json',
-    },
-    vue: 'vue',
+    app: ['./src/main.js'],
+    // info 存在加载顺序的问题，只能单独抽出来
+    vendor: [
+      'vue',
+    ]
   },
   module: {
     rules: utils.styleLoaders({
@@ -29,24 +23,36 @@ const webpackConfig = merge(baseWebpackConfig, {
       extract: true
     })
   },
-  target: 'node',
   // devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
-    libraryTarget: 'commonjs2',
-    path: path.join(__dirname, '..', 'server', 'dist'),
+    path: config.build.assetsRoot,
     filename: 'js/[name].[chunkhash:8].js',
     chunkFilename: 'js/[id].[chunkhash:8].js',
-    publicPath: './'
+    publicPath: config.build.assetsPublicPath
   },
   plugins: [
-    new VueSSRServerPlugin(),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    // split vendor js into its own file
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      // (with more entries, this ensures that no other module
+      //  goes into the vendor chunk)
+      minChunks: Infinity
+    }),
+    // UglifyJs do not support ES6+, you can also use babel-minify for better treeshaking: https://github.com/babel/minify
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+      sourceMap: true,
+      comments: false,
+    }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: 'css/[name].[contenthash:8].css',
+      filename: 'css/[name].[contenthash:8].css'
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
@@ -64,25 +70,30 @@ const webpackConfig = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      vueInstancePlaceholder: '<!--vue-ssr-outlet-->',
-      filename: path.join(__dirname, '..', 'server', 'dist', 'index-origin.html'),
+      vueInstancePlaceholder: '<div id="app"></div>',
+      filename: config.build.index,
       template: 'src/index.html',
-      inject: false,
+      inject: true,
       minify: {
-        // removeComments: true,
-        // collapseWhitespace: true,
+        removeComments: true,
+        collapseWhitespace: true,
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
-      ...config.server.HWPPageBaseConfigForServer,
+      ...config.build.HWPPageBaseConfig
     }),
     // https://webpack.js.org/plugins/module-concatenation-plugin/
     new webpack.optimize.ModuleConcatenationPlugin(),
     // keep module.id stable when vender modules does not change
-    new webpack.HashedModuleIdsPlugin()
+    new webpack.HashedModuleIdsPlugin(),
   ]
 });
+
+if (config.build.bundleAnalyzerReport) {
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+}
 
 module.exports = webpackConfig;

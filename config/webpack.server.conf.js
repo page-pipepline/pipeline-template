@@ -1,24 +1,26 @@
 const path = require('path');
 const utils = require('./utils');
 const webpack = require('webpack');
-const config = require('../config');
+const config = require('.');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
+const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 
 const env = config.build.env;
 
 const webpackConfig = merge(baseWebpackConfig, {
   entry: {
-    app: ['./src/main.js'],
+    app: ['./src/main-server.js'],
   },
   externals: {
     './config/components': {
       commonjs2: '../config/components.json',
       commonjs: '../config/components.json',
     },
+    vue: 'vue',
   },
   module: {
     rules: utils.styleLoaders({
@@ -26,23 +28,17 @@ const webpackConfig = merge(baseWebpackConfig, {
       extract: true
     })
   },
+  target: 'node',
   // devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
+    libraryTarget: 'commonjs2',
     path: path.join(__dirname, '..', 'server', 'dist'),
     filename: 'js/[name].[chunkhash:8].js',
     chunkFilename: 'js/[id].[chunkhash:8].js',
     publicPath: './'
   },
   plugins: [
-    new VueSSRClientPlugin(),
-    // UglifyJs do not support ES6+, you can also use babel-minify for better treeshaking: https://github.com/babel/minify
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-      sourceMap: true,
-      comments: false,
-    }),
+    new VueSSRServerPlugin(),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
@@ -63,10 +59,28 @@ const webpackConfig = merge(baseWebpackConfig, {
         },
       }
     }),
+    // generate dist index.html with correct asset hash for caching.
+    // you can customize output by editing /index.html
+    // see https://github.com/ampedandwired/html-webpack-plugin
+    new HtmlWebpackPlugin({
+      vueInstancePlaceholder: '<!--vue-ssr-outlet-->',
+      filename: path.join(__dirname, '..', 'server', 'dist', 'index-origin.html'),
+      template: 'src/index.html',
+      inject: false,
+      minify: {
+        // removeComments: true,
+        // collapseWhitespace: true,
+        // more options:
+        // https://github.com/kangax/html-minifier#options-quick-reference
+      },
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      chunksSortMode: 'dependency',
+      ...config.server.HWPPageBaseConfigForServer,
+    }),
     // https://webpack.js.org/plugins/module-concatenation-plugin/
     new webpack.optimize.ModuleConcatenationPlugin(),
     // keep module.id stable when vender modules does not change
-    new webpack.HashedModuleIdsPlugin(),
+    new webpack.HashedModuleIdsPlugin()
   ]
 });
 

@@ -1,6 +1,6 @@
 const utils = require('./utils');
 const webpack = require('webpack');
-const config = require('../config');
+const config = require('.');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');

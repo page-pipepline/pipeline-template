@@ -1,6 +1,6 @@
 # pipeline-template
 
-> 页面可视化搭建框架的页面模板
+> 页面可视化搭建框架的页面模板 -- 基于 [vue](https://github.com/vuejs/vue)
 
 ## 用法
 
@@ -17,16 +17,16 @@ npm start
 ```
 
 ### 生成模板
-* 生成服务端渲染所需代码
+* 生成后台渲染所需代码
 ```
 $ npm run server
 ```
 打包结果在`server`目录中。
 
-* 验证服务端渲染可用
+* 验证后台渲染可用
 
-服务端渲染对代码写法是有一些要求的, 比如不允许使用 window/document 这种浏览器特有对象.
-所以可以本地执行服务端渲染来验证服务端渲染是否正常.
+后台渲染对代码写法是有一些要求的, 比如不允许使用 window/document 这种浏览器特有对象.
+所以可以本地执行后台渲染来验证后台渲染是否正常.
 
 ```
 $ npm run render
@@ -49,10 +49,10 @@ $ npm run build
 
 打包结果在`dist`目录中。
 
-## 服务端渲染脚本
+## 后台渲染脚本
 路径 `server/node.js`
 
-用于在 node 服务端渲染出带 DOM 元素的 `index.html`.
+用于在 node 后台渲染出带 DOM 元素的 `index.html`.
 
 ### 渲染发布版本 `默认`
 ```
@@ -68,10 +68,9 @@ $ node server/node.js preview
 ## TODO
 * [x] 基础样式的引入方式
 * [x] 模板打包为压缩包脚本
-* [ ] 组件开发套件
-* [ ] 组件抽离为 npm 包
-* [ ] schema 和 data 的验证页面
-
+* [x] schema 和 data 的验证工具: [schema-tool](https://page-pipepline.github.io/pipeline-editor/dist/#/schema)
+* [ ] ~~组件开发套件~~
+* [ ] ~~组件抽离为 npm 包~~
 
 ## 前后端同构已知问题
 

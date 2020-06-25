@@ -10,7 +10,9 @@ Validator = {
     this.jsoneditor = jsoneditor;
     this.schema = schema || this.jsoneditor.schema;
     this.options = options || {};
-    this.translate = () => this.arguments;
+    this.translate = function(){
+      return arguments;
+    };
     return this;
   },
   validate: function(value) {
